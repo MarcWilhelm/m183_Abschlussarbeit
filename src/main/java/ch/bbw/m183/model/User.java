@@ -1,10 +1,12 @@
 package ch.bbw.m183.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -28,5 +30,6 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+        this.roles = new HashSet<>();
     }
 }

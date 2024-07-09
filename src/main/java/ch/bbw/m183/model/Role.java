@@ -22,6 +22,6 @@ public class Role {
     private Set<User> users;
 
     public Role(String name) {
-        this.name = name;
+        this.name = "ROLE_" + name;
     }
 }

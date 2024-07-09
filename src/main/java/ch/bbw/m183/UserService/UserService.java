@@ -3,10 +3,15 @@ package ch.bbw.m183.UserService;
 import ch.bbw.m183.model.User;
 import ch.bbw.m183.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -21,6 +26,11 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException(username);
         }
         return org.springframework.security.core.userdetails.User.withUsername(username).password(user.getPassword())
-                .authorities("ADMIN").build();
+                .authorities(getAuthorities(user)).build();
+    }
+
+    private Collection<? extends GrantedAuthority> getAuthorities(User user) {
+        System.out.println("In UserService" + user.getRoles());
+        return user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName())).toList();
     }
 }
