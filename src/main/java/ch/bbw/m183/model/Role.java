@@ -1,15 +1,15 @@
 package ch.bbw.m183.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Set;
 
 @Entity
 @Data
 @NoArgsConstructor
+@Getter
+@Setter
 @ToString
 public class Role {
     @Id
@@ -18,7 +18,7 @@ public class Role {
 
     private String name;
 
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
     private Set<User> users;
 
     public Role(String name) {

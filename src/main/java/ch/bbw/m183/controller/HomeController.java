@@ -17,12 +17,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        User user = userRepository.findByUsername("AdminUser");
-        System.out.println("Im Controller: " + user.getRoles().isEmpty());
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(authentication.getName());
-        System.out.println(authentication.getAuthorities());
         return "Hello World";
     }
 }

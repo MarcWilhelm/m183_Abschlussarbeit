@@ -1,10 +1,7 @@
 package ch.bbw.m183.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,6 +9,8 @@ import java.util.Set;
 @Entity
 @Data
 @NoArgsConstructor
+@Getter
+@Setter
 @ToString
 public class User {
     @Id
@@ -25,11 +24,10 @@ public class User {
             name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.roles = new HashSet<>();
     }
 }
