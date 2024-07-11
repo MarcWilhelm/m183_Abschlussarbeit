@@ -17,6 +17,7 @@ Die Authentifizierung kann auf verschiedene Wege umgangen werden, oft kommt es a
 ## 4.3 Insecure Login 
 
 Die zweite Aufgabe konnte ich durch etwas Zufall lösen. In der Aufgabenbeschreibung stand, dass durch den Klick auf den Login-Button ein Request gesendet wird, in dem sich Credentials eines anderen Users befinden. Da ich diesen Request genauer anschauen wollte, bin ich in den DevTools auf den Netzwerk-Tab gegangen. Der Request war einfach zu finden:
+
 ![image](https://github.com/MarcWilhelm/m183_Abschlussarbeit/assets/73398298/8bef7eff-9ad0-4ff2-afc0-968c75a68ecc)
 
 Im Payload stand der Username CaptainJack und das Passwort BlackPearl.
