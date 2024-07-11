@@ -3,6 +3,8 @@ package ch.bbw.m183.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +18,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty(message = "Benutzername ist pflicht")
     private String username;
+    @NotEmpty(message = "Passwort ist pflicht")
+    @Size(min = 8, message = "Passwort muss mindestens 8 Zeichen lang sein")
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
