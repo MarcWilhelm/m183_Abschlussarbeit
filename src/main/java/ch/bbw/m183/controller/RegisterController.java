@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.validation.Valid;
 
-
-//TODO: Check passwords against known bad choices
-//TODO: Auf github schauen wie das passwort validiert werden muss
 @Controller
 public class RegisterController {
 
